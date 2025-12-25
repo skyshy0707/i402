@@ -70,12 +70,10 @@ export default{
     methods: {
         async getLesson(event=null){
             event ? event.preventDefault(): console.log('Try to load lesson open data')
-
             let id = this.$route.params.id
-            console.log(`Signature: ${this.paySignature}`)
             this.paymentDetails.signature = this.paySignature
-
             let encryptedPaymentDetails = {}
+
             for (let key of Object.keys(this.paymentDetails)){
                 encryptedPaymentDetails[key] = btoa(this.paymentDetails[key])
             }
@@ -86,16 +84,9 @@ export default{
             ).then((response) => {
                 this.lesson = response.data.result
                 this.lockedPaymentContent = false
-                console.log(`Lesson content is ${this.lesson.content_data}`)
                 this.message = this.messages.success
             }).catch((error) => {
-                //message,name,code,config,request,event
-                console.log(`Error after payment send: ${error.code}, keys: ${Object.keys(error)}`)
                 if (error.response.status == 402){
-
-                    for (let key of Object.keys(error.response.data.payment.free)){
-                        console.log(`lesson ${key}=${error.response.data.payment.free[key]}`)
-                    }
                     this.paymentDetails = error.response.data.payment.info
                     this.paymentDetails.price = error.response.data.payment.free.price
                     this.lesson = error.response.data.payment.free

@@ -8,7 +8,4 @@ if (storeInitialState){
     store.replaceState(storeInitialState)
 }
 __webpack_public_path__ = myRuntimePublicPath;
-
-console.log(`My runtime publick puth: ${myRuntimePublicPath}`)
-
 app.mount('#app')

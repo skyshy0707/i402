@@ -1,11 +1,5 @@
 <template>
 
-
-    
-
-    <!--style="position: static; align-items: flex-start; height: 100%; display: flex"-->
-    <!--style="bottom: 2rem; position: fixed"-->
-    
     <div class="container">
         <Base>
         </Base>
@@ -50,13 +44,6 @@
             </form>
         </div>
     </div>
-    
-    
-
-    <!--create button - class="create-btn stats" style="bottom: 2rem; position: fixed"-->
-    <!---->
-    
-    
 </template>
 
 <script>
@@ -95,7 +82,6 @@ export default {
     methods: {
         async paginate(event, total){
             event.preventDefault()
-            console.log(`target text: ${event.target.innerText}`)
             let paginateWay = event.target.innerText
 
             if (paginateWay == '>' && (this.currentOffset + this.offsetStep) < total ){
@@ -111,8 +97,6 @@ export default {
             else if (paginateWay == '1'){
                 this.currentOffset = 0
             }
-
-            console.log(`Current offset: ${this.currentOffset}`)
             this.lessons = await this.getLessons(this.currentOffset)
         },
         switchCreateLessonForm(event){
@@ -141,33 +125,21 @@ export default {
             }
             catch (error){
                 let errorData = JSON.stringify(error.response.data)
-                console.log(error)
                 console.log(`Details: ${errorData}`)
             }
             this.total = response.data.total
             return response ? response.data.items : {}
         },
-
+        /*For debug to get some user id*/
         getAuthorByEmail(email){
-            //return lesson author by his/her email
             return { id: 6 }
         },
         async createLesson(event){
             event.preventDefault()
             this.newLesson.author_id = this.getAuthorByEmail(this.authorEmail).id
-            /*let formData = new FormData()
-            let fileContentData = this.newLesson.content_data*/
-            //delete this.newLesson.content_data
-            /*formData.append('lesson', JSON.stringify(this.newLesson))
-            formData.append('files', fileContentData)*/
-
-            //const file = this.$refs.file.files[0]
-            //console.log(`A file is exist: ${file}`)
-            console.log(`A file is exist in newLesson: ${this.newLesson.file}`)
             axios.post(
                 `${this.$store.state.SERVER_BASE_URL}/lesson/create`,
                 this.newLesson
-                //formData
             ).then(
                 (response) => {
                     this.message = `A new with id=${response.data.id} was created`
@@ -186,10 +158,8 @@ export default {
         },
         setContentType(type){
             this.contentType = type
-            console.log(`It setted: ${this.contentType}`)
         },
         setFile(ref){
-            console.log(`setFile is calling: param: ${ref.files}`)
             this.newLesson.content_data = ref.files[0]
         }
     },

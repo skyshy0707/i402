@@ -17,9 +17,7 @@
         },
         methods: {
             setContentType(event: any): void {
-                console.log(`Target: ${event.target.value}`)
                 let key = event.target.value 
-                //this.$emit('settingContentType', event.target.value)
                 this.contentType = {}
                 this.contentType[key] = true
                 this.lesson.content_type = key as string
@@ -27,7 +25,6 @@
 
             setFileContent(event: any): void {
                this.lesson.content_data = event.target.value as string | Text
-               console.log(`setFileContent is calling`)
                this.$emit('setting-file', this.$refs.file)
             }
         },

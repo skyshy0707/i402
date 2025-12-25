@@ -37,11 +37,11 @@ body {
 /*html {
     background: red;
 }*/
+
 body {
-    background: blue; /*Debig color*/
+    background: blue; /*Debug color*/
     min-height: 100vh;
 }
-
 
 p {
     padding: 1em
@@ -215,7 +215,6 @@ p {
 }
 
 .create-btn {
-    /*margin-top: auto;*/
     padding: 0.8rem 2rem;
     background: var(--grad);
     border: none;
@@ -239,7 +238,6 @@ p {
     transform: none;
 }
 
-
 .create-btn-container, .pay-btn-container {
     bottom: 2em;
     padding: 1em 0 0 0;
@@ -258,29 +256,22 @@ p {
         flex-direction: column; /* Вертикальное выравнивание на мобильных устройствах */
         justify-content: flex-start;
         align-items: stretch;
-        /*display: flex;*/
     }
     .sidebar {
         flex-direction: row;
         width: 100%;
         overflow-x: auto;
-        /*display: none;*/ /* Скрыть sidebar на мобильных устройствах, если это нужно */
     }
     .lessons {
         flex: 1; /* Сделаем, чтобы занимали равное пространство */
-        /*flex: 0 0 auto;*/
         margin-bottom: 64px;
         overflow: auto;
     }
 
     .new-lesson {
         flex: 1;
-        /*flex: 0 0 auto;*/
         position: relative;
         overflow: auto;
-        /*-max-height: 100vh;*/
-        /*width: 100%; *//* Каждый блок занимает всю ширину */
-        
     }
 
     .stats {
@@ -350,7 +341,6 @@ p {
         position: flex; 
         top: calc(100vh - 13px - (100vh/2)); 
         left: 0;
-        /*right: 5;*/
         width: 100vw;
         background: rgba(0, 10, 4, 0.97);
     }
@@ -358,13 +348,11 @@ p {
     .pagination-list {
         position: relative; 
         overflow: scroll; 
-        /*top: 80px;*/
     }
 
     .new-lesson {
         flex: 1;
         overflow: auto;
-        /*max-height: 100vh;*/
     }
 }
 
@@ -373,33 +361,8 @@ p {
     * {
         outline: 1px solid rgba(0, 255, 0, 0.4);
     }
-    /*html, body {
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-        height: auto;
-    }
 
     #app {
-        height: 100vh;
-        flex: none;
-        display: flex;
-        flex-direction: column;
-    }
-
-    #wrapper {
-        flex: 1 0 auto;
-        display: flex;
-        flex-direction: column;
-        min-height: 0;
-    }*/
-
-    /*html, body {
-        overflow-x: hidden
-    }*/
-
-    #app {
-        /*max-width: 100vw;*/
         min-height: 100vh;
         background-color: yellow;
     }
@@ -420,11 +383,9 @@ p {
         overflow-x: auto;
     }
 
-
     .stats {
         position: absolute; 
         top: calc(100vh - (65vh/2)); 
-        /*display: none;*/
     }
 
     .lessons, .new-lesson {
@@ -432,16 +393,12 @@ p {
         overflow-y: auto;
         overflow-x: auto;
         max-height: 50vh;
-        /*max-width: 100%;*/
-        /*overflow-x: scroll*/
     }
 
     .lessons {
         width: auto;
         min-width: 100%;
         background-color: orange;
-        /*width: max-content;
-        min-width: 100%;*/
     }
 
     .new-lesson {
@@ -449,46 +406,3 @@ p {
         min-height: 100vh
     }
 }
-/*@media (max-height: 360px) {
-    .container {
-        flex-direction: column;
-        justify-content: flex-start;
-    }
-}*/
-
-/*@media (max-height: 360px) {
-
-    .lessons,
-    .new-lesson {
-        overflow: visible;
-    }*/
-
-    /*.new-lesson {
-        position: relative;
-        top: calc(100vh - 120px - (100vh/2));
-    }*/
-    /*.create-btn{
-        calc(146px - 2em + ((100vh - 60px)/2))
-         
-    }*/
-
-    /*.create-btn-container {
-        position: fixed;
-        padding-left: 20px;
-        background-color: #0f0f0f;
-        left: 0;
-        bottom: 0;
-        top: calc(100vh + 50px);
-        width: 100%;
-        height: 50px;
-    }*/
-
-    /*.panel {
-        margin-bottom: 64px;
-    }*/
-/*}*/
-
-/*@media (max-height: (255px + (100vh - 60px)/2)) {
-    
-    
-}*/

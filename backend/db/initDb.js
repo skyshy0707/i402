@@ -43,9 +43,6 @@ const initialize = () => {
         ).catch((error) => {
             console.log(`Невозможно установить соединение. Details: ${error}`)
         })
-
-
-        
     })   
 }
 

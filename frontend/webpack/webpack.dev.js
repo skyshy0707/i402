@@ -1,14 +1,13 @@
-const path = require('path-browserify')
-const webpack = require('webpack')
-
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
+const path = require('path-browserify')
 const { VueLoaderPlugin } = require('vue-loader')
+const webpack = require('webpack')
 
 const dist = path.resolve(__dirname, '../src/static')
-
 console.log(`dirname: ${__dirname}`)
+
 module.exports = {
   entry: '../src/client-entry.js',
   context: __dirname,

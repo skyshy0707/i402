@@ -6,7 +6,6 @@ const helmet = require('helmet')
 const multer  = require('multer')
 const path = require('node:path')
 
-
 const db = require('./db/models/index')
 const { generateFileName, generateHtml, lessonSavingPath } = require('./utils/fromTextToHtml')
 const { lessonUnpaidInfo, paginateResponseData } = require('./serializing/schemes')
@@ -18,19 +17,14 @@ const {
 } = require('./serializing/serializers')
 const send = require('./utils/USDCSender')
 
-
 const app = express()
 const corsOptions = {
   origin: [
     "http://127.0.0.1:9001"
   ]
 }
-
-
 const LIMIT = 10
 const URL_API = 'http://127.0.0.1:9007/'
-
-
 const storage = multer.diskStorage({
   destination: (request, file, cb) => {
     cb(null, path.join(__dirname, lessonSavingPath))
@@ -42,8 +36,6 @@ const storage = multer.diskStorage({
     )
   }
 })
-
-
 const upload = multer({ storage: storage })
 const uploadMiddleware = upload.single('content_data')
 
@@ -83,23 +75,19 @@ app.get('/api/lesson/:id', async (req, res) => {
     payment: { info: lessonUnpaidInfo, free: lessonUnpaid } 
   }
   
-  console.log(`x payment ${xPayment}, ${typeof(xPayment)}`)
   if (!xPayment) {
     return res.status(402).json(unpaidResponseData);
   }
   for (let key of Object.keys(xPayment)){
-    console.log(`x payment param ${key}=${xPayment[key]}`)
     xPayment[key] = Base64.decode(xPayment[key])
   }
 
   // … проверка платежа, верификация, если всё ок: 
 
   try{
-    console.log(`Parment details : signature: ${xPayment.signature}, price: ${xPayment.price}`)
     await send(xPayment.signature, xPayment.price)
   }
   catch(error){
-    console.log(`Error while payment send`)
     return res.status(402).json(unpaidResponseData)
   }
   
@@ -111,12 +99,6 @@ app.post('/api/lesson/create', async (req, res) => {
     const file = req.file
     const lesson = req.body
 
-    if (file){
-      for (let prop of Object.keys(file)){
-        console.log(`Prop file: ${prop}`)
-      }
-    }
-    
     if (file){
       lesson.content_data = URL_API + file.filename
     }
