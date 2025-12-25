@@ -3,13 +3,14 @@
     <div class="container">
         <Base>
         </Base>
+        <span class="lessons lesson-data-tb">
+            <span>Title</span>
+            <span>Description</span>
+            <span>Cost</span>
+        </span>
         <div class="lessons">
-            <ul class="pagination-list">
-                <li class="lesson-item">
-                    <span>Title</span>
-                    <span>Description</span>
-                    <span>Cost</span>
-                </li>
+            
+            <ul class="pagination-list" style="margin-bottom: 40px; margin-top: 1em">
                 <li 
                     v-for="lessonItem in lessons" 
                         :key="lessonItem.id" 
