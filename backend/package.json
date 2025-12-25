@@ -1,0 +1,27 @@
+{
+  "name": "uni402",
+  "version": "1.0.0",
+  "description": "mini web-platform",
+  "license": "ISC",
+  "author": "skyshy0707",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Hello, It's me\""
+  },
+  "dependencies": {
+    "dotenv": "17.2.3",
+    "cors": "2.8.5",
+    "ethers": "6.15.0",
+    "express": "5.1.0",
+    "express-fileupload": "1.5.2",
+    "helmet": "8.1.0",
+    "js-base64": "3.7.8",
+    "multer": "2.0.2",
+    "pg": "8.16.3",
+    "pg-hstore": "2.3.4",
+    "sequelize": "6.37.7",
+    "sequelize-to-json": "0.10.4",
+    "@sequelize/cli": "6.6.3"
+  }
+}

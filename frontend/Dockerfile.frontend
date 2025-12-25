@@ -1,0 +1,13 @@
+FROM nginx AS production-stage
+
+RUN apt-get update && apt-get upgrade && apt-get install -y npm
+
+COPY . /code/
+
+WORKDIR /code
+
+RUN chmod 775 package.json
+
+RUN npm install
+
+CMD ["npm", "run", "dev"]

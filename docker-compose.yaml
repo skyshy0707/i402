@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  database:
+    image: postgres:latest
+    container_name: i402
+    env_file:
+      ./.env
+    ports:
+      - "5534:5432"
+    restart:
+        unless-stopped
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      ./.env
+    expose:
+      - 8000
+    ports:
+      - 9007:8000
+    depends_on: 
+      - database
+    volumes:
+      - ./logs:/code/src/logs
