@@ -10,7 +10,7 @@
         </span>
         <div class="lessons">
             
-            <ul class="pagination-list" style="margin-bottom: 40px; margin-top: 1em">
+            <ul class="pagination-list">
                 <li 
                     v-for="lessonItem in lessons" 
                         :key="lessonItem.id" 

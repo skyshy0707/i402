@@ -163,7 +163,9 @@ p {
 
 .pagination-list {
     position: static;
-    margin-left: 0.4em
+    margin-left: 0.4em;
+    margin-bottom: 2em; 
+    margin-top: 1.5em;
 }
 
 .form-field {
