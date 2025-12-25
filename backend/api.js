@@ -45,10 +45,6 @@ app.use(express.static(path.join(__dirname, lessonSavingPath)))
 app.use(uploadMiddleware)
 
 
-app.get('/', async (req, res) => {
-
-})
-
 app.get('/api/lessons', async (req, res) => {
 
   let offset = parseInt(req.query.offset)
