@@ -34,12 +34,7 @@ body {
         radial-gradient(circle at 90% 80%, rgba(143, 211, 244, 0.05) 0%, transparent 20%);
 }
 
-/*html {
-    background: red;
-}*/
-
 body {
-    /*background: blue;*/ /*Debug color*/
     min-height: 100vh;
 }
 
@@ -315,7 +310,6 @@ p {
     }
 
     .stats {
-        /*top: calc(100vh - 13px - (100vh/2));*/
         top: calc(330px + 1rem);
         left: 0;
         padding: 0.25rem;
@@ -384,8 +378,6 @@ p {
     .stats {
         position: flex; 
         top: calc(100vh - 13px - (100vh/2)); 
-        /*left: 0;*/
-        /*width: auto;*/
         background: rgba(0, 10, 4, 0.97);
     }
 }
@@ -398,14 +390,6 @@ p {
         width: 30px;
         margin: 0.4em;
     }
-
-    /*.stats {
-        position: flex; 
-        top: calc(100vh - 13px - (100vh/2)); 
-        left: 0;
-        width: 100vw;
-        background: rgba(0, 10, 4, 0.97);
-    }*/
 
     .pagination-list {
         position: relative; 
@@ -420,14 +404,8 @@ p {
 
 @media (max-height: 360px) {
 
-
-    /*only for debug: * {
-        outline: 1px solid rgba(0, 255, 0, 0.4);
-    }*/
-
     #app {
         min-height: 100vh;
-        /*background-color: yellow;*//*for debug*/
     }
 
     .container {
