@@ -19,7 +19,7 @@
                     <span>{{ lessonItem.title }}</span>
                     <span>{{ lessonItem.description }}</span>
                     <span>{{ lessonItem.price }}</span>
-                    <a :href="lessonItem.url" role="button" class="act-btn">View</a>
+                    <a :href="lessonItem.url" role="button" class="quick-btn">👁</a>
                 </li> 
             </ul>
             <div @click="paginate($event, total)" class="stats">
@@ -148,7 +148,7 @@ export default {
                     this.newLesson.description = ''
                     this.newLesson.price = ''
                     this.newLesson.content_type = ''
-                    this.newLesson.content_body = ''
+                    this.newLesson.content_data = ''
                 }
             ).catch(
                 (error) => { 
