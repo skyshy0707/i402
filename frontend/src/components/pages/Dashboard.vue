@@ -97,8 +97,8 @@ export default {
                 this.currentOffset -= this.offsetStep
             }
             else if (paginateWay == '⇲'){
-                this.currentOffset = total > (this.currentOffset + this.offsetStep) ? 
-                    Math.floor(total/this.offsetStep) * this.offsetStep : this.currentOffset
+                this.currentOffset = (total + this.offsetStep) % this.offsetStep == 0 ? this.currentOffset 
+                    : Math.floor(total/this.offsetStep) * this.offsetStep
             }
             else if (paginateWay == '1'){
                 this.currentOffset = 0
