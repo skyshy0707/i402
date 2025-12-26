@@ -30,8 +30,8 @@
             </div>
         </div>
         <div class="new-lesson">
-            <button @click="switchCreateLessonForm" type="button" class="">+</button>
-            <form v-on:submit="createLesson" v-if="createLessonVisible" enctype="multipart/form-data" class="form-field">
+            <button @click="switchCreateLessonForm" type="button" class="local-margin">+</button>
+            <form v-on:submit="createLesson" v-if="createLessonVisible" enctype="multipart/form-data" class="form-field dark-text">
                 <LessonData 
                     :lesson="newLesson" 
                     :isDisabled="!createLessonVisible" 
@@ -110,7 +110,7 @@ export default {
 
             this.createLessonVisible = !this.createLessonVisible
             if (this.createLessonVisible){
-                event.target.innerText = "-"
+                event.target.innerText = "−"
             }
             else event.target.innerText = "+"
             
@@ -148,10 +148,6 @@ export default {
                 this.newLesson
             ).then(
                 (response) => {
-                    /*for (let jkey of Object.keys(response.data)){
-                        console.log(`data item key=${jkey}: ${response.data[jkey]}`)
-                    }*/
-                    
                     this.message = `A new with id=${response.data.lesson_id} was created`
                     this.newLesson.title = ''
                     this.newLesson.description = ''

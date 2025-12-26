@@ -204,6 +204,11 @@ p {
     border-color: var(--c-green);
 }
 
+
+.dark-text input::placeholder, .dark-text textarea::placeholder, .dark-text div input::placeholder {
+    color: var(--c-dark)
+}
+
 .nav-btn {
     background: transparent;
     border: none;
@@ -229,6 +234,10 @@ p {
     background: var(--grad);
     font-weight: bold;
     box-shadow: 0 0 15px rgba(132, 250, 176, 0.3);
+}
+
+.local-margin {
+    margin-bottom: 1em
 }
 
 .create-btn {
