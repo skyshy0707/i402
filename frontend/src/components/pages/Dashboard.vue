@@ -36,13 +36,15 @@
                     :lesson="newLesson" 
                     :isDisabled="!createLessonVisible" 
                     :createLesson="true" 
-                    @settingContentType="setContentType"  
                     @setting-file="setFile">
                 </LessonData>
                 <div class="create-btn-container">
                     <button type="submit" class="create-btn">Create</button>
                 </div>
             </form>
+            <div>
+                <p></p>
+            </div>
         </div>
     </div>
 </template>
@@ -147,7 +149,6 @@ export default {
                     this.newLesson.title = ''
                     this.newLesson.description = ''
                     this.newLesson.price = ''
-                    this.newLesson.content_type = ''
                     this.newLesson.content_data = ''
                 }
             ).catch(
@@ -156,9 +157,6 @@ export default {
                     console.log(`Detail: ${errorData}`)
                 }
             )
-        },
-        setContentType(type){
-            this.contentType = type
         },
         setFile(ref){
             this.newLesson.content_data = ref.files[0]
