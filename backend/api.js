@@ -88,12 +88,15 @@ app.get('/api/lesson/:id', async (req, res) => {
   }
   
   const lesson = lessonGetSerializer.serialize(lessonResult)
-  return res.status(200).json({ result: lesson });
+  return res.status(200).json({ message: 'Success', result: lesson });
 });
 
 app.post('/api/lesson/create', async (req, res) => {
+    let instance
     const file = req.file
     const lesson = req.body
+
+    console.log(`Lesson.content-type: ${lesson.content_type}`)
 
     if (file){
       lesson.content_data = URL_API + file.filename
@@ -103,8 +106,19 @@ app.post('/api/lesson/create', async (req, res) => {
       lesson.content_data = URL_API + filename
     }
     
-    const instance = await db.Lesson.create(lesson)
+    try {
+      instance = await db.Lesson.create(lesson)
+    }
+    catch (error) {
 
+      return res.status(400).json(
+        { 
+          error: "Bad Request", 
+          message: error 
+        }
+      )
+    }
+    
     return res.status(201).json(
       lessonCreateSerializer.serialize(instance)
     )

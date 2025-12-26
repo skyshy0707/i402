@@ -47,7 +47,7 @@ p {
 }
 
 
-.warning {
+.warningPayment, .warningExist {
     background-color: var(--c-warning);
     color: var(--c-black);
     font-family: var(--f-body);
@@ -61,7 +61,7 @@ p {
     border-radius: 6px;
 }
 
-.success {
+.success, .lessonCreated {
     background-color: var(--c-green);
     color: var(--c-black);
     font-family: var(--f-body);
@@ -141,10 +141,11 @@ p {
     grid-template-columns: 65px 150px 10px 10px; 
     gap: 2em 0.6em; 
     margin-bottom: 1em; 
-    background-color: black;
+    background-color: rgba(0, 19, 7, 0.96);
     height: 30px;
     overflow: hidden;
     z-index: 1000;
+    border-radius: 6px;
 }
 
 .stats {

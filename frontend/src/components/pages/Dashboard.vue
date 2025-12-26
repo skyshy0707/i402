@@ -42,9 +42,10 @@
                     <button type="submit" class="create-btn">Create</button>
                 </div>
             </form>
-            <div>
-                <p></p>
-            </div>
+            <Message
+                :message="message"
+            >
+            </Message>
         </div>
     </div>
 </template>
@@ -59,13 +60,15 @@ axios.defaults.headers.common['Access-Control-Allow-Headers'] = 'Origin, X-Reque
 
 import Base from '../common/Base.vue'
 import LessonData from '../common/LessonData.vue'
+import Message from '../common/Message.vue'
 import styles from '../../assets/index.css'
 
 export default {
     name: 'dashboard',
     components: {
         Base,
-        LessonData
+        LessonData,
+        Message
     },
 
     data(){
@@ -145,7 +148,11 @@ export default {
                 this.newLesson
             ).then(
                 (response) => {
-                    this.message = `A new with id=${response.data.id} was created`
+                    /*for (let jkey of Object.keys(response.data)){
+                        console.log(`data item key=${jkey}: ${response.data[jkey]}`)
+                    }*/
+                    
+                    this.message = `A new with id=${response.data.lesson_id} was created`
                     this.newLesson.title = ''
                     this.newLesson.description = ''
                     this.newLesson.price = ''

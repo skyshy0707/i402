@@ -23,10 +23,11 @@
                 </div>
             </form>
 
-            <div>
-                <p :class="styleMessage">{{ message }}</p>
-            </div>
-
+            
+            <Message
+                :message="message"
+            >
+            </Message>
         </div>
     </div>
     
@@ -43,12 +44,14 @@ axios.defaults.headers.common['Access-Control-Allow-Headers'] = 'Origin, X-Reque
 
 import Base from '../common/Base.vue'
 import LessonData from '../common/LessonData.vue'
+import Message from '../common/Message.vue'
 
 export default{
     name: 'lesson',
     components: {
         Base,
-        LessonData
+        LessonData,
+        Message
     },
     data(){
         return { 
@@ -59,12 +62,6 @@ export default{
             paySignature: '',
             message: '',
             contentType: '',
-            messages: {
-                success: 'Success',
-                error: 'Something went wrong',
-                warning: 'Payment required'
-            },
-            styleMessage: ''
         }
     },
     methods: {
@@ -84,29 +81,19 @@ export default{
             ).then((response) => {
                 this.lesson = response.data.result
                 this.lockedPaymentContent = false
-                this.message = this.messages.success
+                this.message = response.data.message
             }).catch((error) => {
+                var paymentDetails = error.response.data.payment
                 if (error.response.status == 402){
-                    this.paymentDetails = error.response.data.payment.info
-                    this.paymentDetails.price = error.response.data.payment.free.price
-                    this.lesson = error.response.data.payment.free
+                    this.paymentDetails = paymentDetails.info
+                    this.paymentDetails.price = paymentDetails.free.price
+                    this.lesson = paymentDetails.free
                     this.lockedPayment = false
                     this.message = error.response.data.message
                 }
-                else this.message = this.messages.error
-            }).finally(() => this.setStyleMessage(this.message))
-            
+                else this.message = error.message
+            })
         },
-        setStyleMessage(){
-
-            for (let messageType of Object.keys(this.messages)){
-                if (this.message == this.messages[messageType]){
-                    this.styleMessage = messageType
-                    return
-                }
-            }
-            this.styleMessage = 'error'
-        }
     },
 }
 </script>
