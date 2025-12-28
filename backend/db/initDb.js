@@ -1,7 +1,4 @@
 const { 
-    ConnectionAcquireTimeoutError,
-    ConnectionRefusedError,
-    DatabaseError,
     UniqueConstraintError
 } = require('sequelize')
 

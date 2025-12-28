@@ -1,8 +1,6 @@
 const { Base64 } = require("js-base64")
 const cors = require('cors')
 const express = require('express')
-const fileupload = require("express-fileupload")
-const helmet = require('helmet')
 const multer  = require('multer')
 const path = require('node:path')
 
